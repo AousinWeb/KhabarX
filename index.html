@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Har device (Mobile, Tablet, PC) par sahi dikhne ke liye -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHABARX</title>
+
+    
+    <!-- Agle step mein hum is CSS file ko banayenge -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================= HEADER SECTION ================= -->
+    <header class="main-header">
+        <!-- Left Side: Logo aur Website ka Naam -->
+        <div class="header-left">
+            <a href="index.html" class="brand">
+                <i class="fa-solid fa-newspaper logo-icon"><img src="pic/logo.png" alt=""></i>
+                <span class="site-name"></span>
+            </a>
+        </div>
+
+        <!-- Right Side: Search, Language Changer, aur Menu Button -->
+        <div class="header-right">
+            <!-- Search Icon -->
+            <button class="icon-btn" id="search-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"><img src="pic/search.PNG"></i>
+            </button>
+
+            <!-- Language Changer Icon -->
+            <button class="icon-btn" id="lang-btn" aria-label="Change Language">
+                <i class="fa-solid fa-globe"><img src="pic/language.PNG"></i>
+            </button>
+
+            <!-- Menu Button Icon -->
+            <button class="icon-btn" id="menu-btn" aria-label="Open Menu">
+                <i class="fa-solid fa-bars"><img src="pic/menu.PNG"></i>
+            </button>
+        </div>
+            <!-- ================= HIDDEN PANELS (Click karne par khulenge) ================= -->
+    
+    <!-- 1. Search Bar Panel -->
+      <!-- 1. Search Bar Panel (Search + Close Buttons ke saath) -->
+    <div id="search-panel" class="hidden-panel search-box-container">
+        <div class="search-inner">
+            <input type="text" id="search-input" placeholder="Search anything. Discover everything...">
+            <!-- Button 1: Search karne ke liye -->
+            <button id="submit-search" class="search-action-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"><img src="pic/search.PNG"></i>
+            </button>
+            <!-- Button 2: Band karne ke liye -->
+            <button id="close-search" class="close-btn" aria-label="Close">
+                <i class="fa-solid fa-xmark"><img src="pic/close.PNG"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. Language Dropdown Menu (3 Zabanein) -->
+    <div id="lang-panel" class="hidden-panel lang-dropdown">
+        <button class="lang-option active" data-lang="roman">English</button>
+        <button class="lang-option" data-lang="urdu">اردو (Urdu)</button>
+        <button class="lang-option" data-lang="english">Roman Urdu</button>
+    </div>
+
+    <!-- 3. Side Navigation Menu Drawer -->
+    <div id="menu-panel" class="hidden-panel side-menu">
+        <div class="menu-header">
+            <h2>KhabarX</h2>
+            <button id="close-menu" class="close-btn"><i class="fa-solid fa-xmark"><img src="pic/close.PNG"></i></button>
+        </div>
+        <ul class="menu-links">
+            <!-- Side Menu aur Footer ke Links ko aise update karein -->
+         <li><h4  class="catmenu">World Affairs</h4>
+            <a href="category.html?cat=International-Relations">International Relations</a>
+            <a href="category.html?cat=International-Conflicts">International Conflicts</a>
+            <a href="category.html?cat=World-Politics">World Politics</a>   
+            <a href="category.html?cat=Global-Organizations">Global Organizations</a>
+            <a href="category.html?cat=Current-Affairs">Current Affairs</a>
+            <a href="category.html?cat=Global-Issues">Global Issues</a>   
+            <hr>
+         </li>
+         <li><h4  class="catmenu">Business</h4>
+            <a href="category.html?cat=World-Economy">World Economy</a>
+            <a href="category.html?cat=Banking-and-Finance">Banking & Finance</a>
+            <a href="category.html?cat=Companies-and-Brands">Companies & Brands</a>   
+            <a href="category.html?cat=Entrepreneurship">Interpreneurship</a>
+            <a href="category.html?cat=Industries">Industries</a>
+            <a href="category.html?cat=Cryptocurrency">Cryptocurrency</a>   
+            <hr>
+         </li>
+          <li><h4  class="catmenu">Technology</h4>
+            <a href="category.html?cat=AI">AI</a>
+            <a href="category.html?cat=Programming">Programming</a>
+            <a href="category.html?cat=Cybersecurity">Cybersecurity</a>   
+            <a href="category.html?cat=Robotics">Robotics</a>
+            <a href="category.html?cat=Software-and-Applications">Software & Applications</a>
+            <a href="category.html?cat=Computer-Science">Computer Science</a>   
+            <hr>
+         </li>
+         
+         <li><h4 class="catmenu">Support & helps </h4>
+            <a href="about.html">About Us</a></li>
+            <a href="contuct.html">Contact Us</a></li>
+            <a href="terms&conditions.html">Term & Conditions</a></li>
+            <a href="privacy-policy.html">Privacy Policy</a></li>
+            <a href="help.html">Helps</a></li>
+            
+
+       
+
+        </ul>
+        
+    </div>
+
+    </header>
+
+    <!-- ================= MAIN CONTENT (Khali Jagah News Ke Liye) ================= -->
+       <!-- ================= MAIN CONTENT ================= -->
+    <main id="news-container">
+        <!-- Section 2: Overall Latest 5 News -->
+        <section class="latest-news-section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-bolt"></i> Latest Discover</h2>
+                <span class="live-tag">TOP 5 UPDATES</span>
+            </div>
+
+            <!-- JavaScript yahan khud-ba-khud Latest 5 News dale gi -->
+            <div id="home-latest-news-grid" class="latest-magazine-grid"></div>
+        </section>
+
+        
+
+            <!-- ================= SECTION 4: MOST POPULAR 10 NEWS ================= -->
+    <section class="popular-news-section">
+        <div class="popular-container">
+            <div class="section-header">
+                 <h2><i class="fa-solid fa-fire"></i> <span>Most Popular information</span></h2>
+                 <span class="live-tag" data-translate="top10Tag">TOP 10 TRENDING</span>
+            </div>
+
+            <!-- JavaScript yahan khud-ba-khud Top 10 Popular News dale gi -->
+            <div id="popular-news-grid" class="popular-grid"></div>
+        </div>
+    </section>
+        <!-- ================= SECTION 4: FULL-WIDTH 5-PAGE KNOWLEDGE SLIDER ================= -->
+    <section class="full-width-slider-section">
+        <div class="fw-slider-container">
+
+            <!-- SLIDE 1 -->
+            <div class="fw-slide active">
+                <div class="fw-slide-content">
+                    <span class="fw-badge">PAGE 1 / 5 • ABOUT KhabarX</span>
+                    <div class="fw-icon"><i class="fa-solid fa-newspaper"></i></div>
+                    <h2>Discover what you don't know.</h2>
+                    <p>We believe that knowledge should be accessible to everyone. Our platform brings together valuable information form different fields, helping people explore the world, understand complex topics and Discover something new every day.</p>
+                </div>
+            </div>
+
+            <!-- SLIDE 2 -->
+            <div class="fw-slide">
+                <div class="fw-slide-content">
+                    <span class="fw-badge">PAGE 2 / 5 • 3 Language Accessibility</span>
+                    <div class="fw-icon"><i class="fa-solid fa-globe"></i></div>
+                    <h2>knowledge without language Barriers.</h2>
+                    <p>To make information easier to understand and explore , our platform Supports three languages: Urdu, English, Roman Urdu.</p>
+                </div>
+            </div>
+
+            <!-- SLIDE 3 -->
+            <div class="fw-slide">
+                <div class="fw-slide-content">
+                    <span class="fw-badge">PAGE 3 / 5 • Endless Discoveries</span>
+                    <div class="fw-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h2>Explore The World of knowledge</h2>
+                    <p>Explore a wide range of topics, carefully organized to make information easier to find and understand. Sceince & Nature, Technology, Business, Health and Education , Engineering & Inventions, World Affairs & General knowledge</p>
+                </div>
+            </div>
+
+            <!-- SLIDE 4 -->
+            <div class="fw-slide">
+                <div class="fw-slide-content">
+                    <span class="fw-badge">PAGE 4 / 5 • Our Services</span>
+                    <div class="fw-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <h2>More Then Just Information</h2>
+                    <p>KhabarX aims to provide useful services that make discovering and accessing knowledge easier. Daily Updates, knowledge Library, Research & References, Eductional Resources, Discover & Explore.  our goal is to make information accessible, understandable and useful.</p>
+                </div>
+            </div>
+
+            <!-- SLIDE 5 -->
+            <div class="fw-slide">
+                <div class="fw-slide-content">
+                    <span class="fw-badge">PAGE 5 / 5 • Our Network & Partners</span>
+                    <div class="fw-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h2>Connected Through Innovation.</h2>
+                    <p>KhabarX is part of a growing digital vision supported by Aousin Soft and its wider digital ecosystem.</p>
+                </div>
+            </div>
+
+            <!-- Left & Right Arrows -->
+            <button class="fw-arrow fw-prev" id="fw-prev-btn" aria-label="Previous">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="fw-arrow fw-next" id="fw-next-btn" aria-label="Next">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- Neeche 5 Dots -->
+            <div class="fw-dots">
+                <button class="fw-dot active" data-slide="0"></button>
+                <button class="fw-dot" data-slide="1"></button>
+                <button class="fw-dot" data-slide="2"></button>
+                <button class="fw-dot" data-slide="3"></button>
+                <button class="fw-dot" data-slide="4"></button>
+            </div>
+
+        </div>
+    </section>
+
+
+        <!-- ================= SECTION 5: TOP 5 CATEGORIES (CIRCLE SHOWCASE) ================= -->
+    <section class="top-categories-section">
+        <div class="categories-container">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-compass"></i> <span data-translate="exploreCatHeading">Explore Top Categories</span></h2>
+                <span class="live-tag" data-translate="top5CatTag">5 SECTIONS</span>
+            </div>
+
+            <div class="circle-categories-grid">
+                
+                <!-- Category 1: Pakistan -->
+                <a href="category.html?cat=General-Knowledge" class="cat-circle-box">
+                    <div class="cat-circle-ring">
+                        <i class="fa-solid fa-landmark-dome">G</i>
+                    </div>
+                    <h3>General knowledge</h3>
+                    <span class="cat-sub">Letest Discoveries</span>
+                </a>
+
+                <!-- Category 2: World -->
+                <a href="category.html?cat=World-Politics" class="cat-circle-box">
+                    <div class="cat-circle-ring">
+                        <i class="fa-solid fa-earth-americas">P</i>
+                    </div>
+                    <h3>World Politics</h3>
+                    <span class="cat-sub">Global Politics</span>
+                </a>
+
+                <!-- Category 3: Sports -->
+                <a href="category.html?cat=Nutrition" class="cat-circle-box">
+                    <div class="cat-circle-ring">
+                        <i class="fa-solid fa-trophy">N</i>
+                    </div>
+                    <h3>Nutrition</h3>
+                    <span class="cat-sub">Health & Fitness</span>
+                </a>
+
+                <!-- Category 4: Technology -->
+                <a href="category.html?cat=AI" class="cat-circle-box">
+                    <div class="cat-circle-ring">
+                        <i class="fa-solid fa-microchip">A</i>
+                    </div>
+                    <h3>AI</h3>
+                    <span class="cat-sub">AI & Gadgets</span>
+                </a>
+
+                <!-- Category 5: Business -->
+                <a href="category.html?cat=Global-Issues" class="cat-circle-box">
+                    <div class="cat-circle-ring">
+                        <i class="fa-solid fa-chart-line">GI</i>
+                    </div>
+                    <h3>Global Issues</h3>
+                    <span class="cat-sub">World Affairs</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    </main>
+
+
+    <!-- ================= EXPERT LEVEL FOOTER SECTION ================= -->
+    <footer class="expert-footer">
+        <div class="footer-grid">
+            
+            <!-- Column 1: Website Info aur Social Icons -->
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <i class="fa-solid fa-newspaper">KhabarX</i>
+                    <h3></h3>
+                </div>
+                <p>KhabarX is a global knowledge and information platform dedicated to exploring the world beyond what we know.</p>
+                <!-- <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"> 𝐟</i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter">X</i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram">🅾</i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div> -->
+            </div>
+
+            <!-- Column 2: News Categories -->
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                   <!-- Side Menu aur Footer ke Links ko aise update karein -->
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="category.html?cat=International-Relations">International Relations</a> </li>
+                 <li><a href="category.html?cat=International-Conflicts">International Conflicts</a></li>
+                 <li><a href="category.html?cat=World-Politics">World Politics</a></li>
+                 <li><a href="category.html?cat=Global-Organizations">Global Organizations</a></li>
+                 <li><a href="category.html?cat=Current-Affairs">Current Affairs</a></li>
+                <li><a href="category.html?cat=Global-Issues">Global Issues</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Column 3: Zaroori Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contuct.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms&conditions.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter Subscription -->
+            <div class="footer-col">
+                <h4>Daily Updates</h4>
+                <p data-translate="footerTagline">.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your Gmail..." required>
+                    <button type="submit" aria-label="Subscribe">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom: Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 KhabarX. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="newsData.js"></script>    
+    <script src="script.js"></script>
+    <script src="translations.js"></script>
+        
+
+
+</body>
+</html>
