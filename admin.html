@@ -232,7 +232,7 @@
         </div>
     </div>
 
-    <script>
+        <script>
         function utf8ToBase64(str) {
             return btoa(unescape(encodeURIComponent(str)));
         }
@@ -250,20 +250,30 @@
         repoField.value = localStorage.getItem('np_gh_repo') || '';
         tokenField.value = localStorage.getItem('np_gh_token') || '';
 
-        document.getElementById('save-gh-btn').addEventListener('click', function() {
-            var u = userField.value.trim();
-            var r = repoField.value.trim();
-            var t = tokenField.value.trim();
+        function cleanCredentials(u, r, t) {
+            var cleanU = (u || '').trim().replace(/^https?:\/\/github\.com\//i, '').replace(/\//g, '');
+            var cleanR = (r || '').trim().replace(/^https?:\/\/github\.com\//i, '').replace(/\//g, '');
+            // Token se har space aur invisible character hatana zaroori hai warna 'Failed to fetch' aata hai
+            var cleanT = (t || '').trim().replace(/[^\x21-\x7E]/g, '');
+            return { user: cleanU, repo: cleanR, token: cleanT };
+        }
 
-            if (!u || !r || !t) {
+        document.getElementById('save-gh-btn').addEventListener('click', function() {
+            var creds = cleanCredentials(userField.value, repoField.value, tokenField.value);
+
+            if (!creds.user || !creds.repo || !creds.token) {
                 showStatus(ghStatus, 'status-error', 'Baraye meharbani Username, Repository, aur Token teeno likhein!');
                 return;
             }
 
-            localStorage.setItem('np_gh_user', u);
-            localStorage.setItem('np_gh_repo', r);
-            localStorage.setItem('np_gh_token', t);
-            showStatus(ghStatus, 'status-success', 'GitHub Settings is browser mein mehfooz ho gayi hain!');
+            userField.value = creds.user;
+            repoField.value = creds.repo;
+            tokenField.value = creds.token;
+
+            localStorage.setItem('np_gh_user', creds.user);
+            localStorage.setItem('np_gh_repo', creds.repo);
+            localStorage.setItem('np_gh_token', creds.token);
+            showStatus(ghStatus, 'status-success', 'Settings Saved! User: <strong>' + creds.user + '</strong> | Repo: <strong>' + creds.repo + '</strong>');
         });
 
         function showStatus(el, typeClass, msg) {
@@ -273,15 +283,17 @@
         }
 
         async function getGitHubFile(user, repo, token, filePath) {
-            var url = 'https://github.com' + user + '/' + repo + '/contents/' + filePath;
+            var url = 'https://github.com' + user + '/' + repo + '/contents/' + filePath + '?t=' + Date.now();
             var res = await fetch(url, {
+                method: 'GET',
+                cache: 'no-store',
                 headers: {
-                    'Authorization': 'Bearer ' + token,
+                    'Authorization': 'token ' + token,
                     'Accept': 'application/vnd.github.v3+json'
                 }
             });
             if (!res.ok) {
-                throw new Error(filePath + ' file nahi mili ya GitHub Token ghalat hai! (Status: ' + res.status + ')');
+                throw new Error(filePath + ' nahi mili ya Token permission ghalat hai (Code: ' + res.status + ')');
             }
             return await res.json();
         }
@@ -291,7 +303,7 @@
             var res = await fetch(url, {
                 method: 'PUT',
                 headers: {
-                    'Authorization': 'Bearer ' + token,
+                    'Authorization': 'token ' + token,
                     'Accept': 'application/vnd.github.v3+json',
                     'Content-Type': 'application/json'
                 },
@@ -302,7 +314,7 @@
                 })
             });
             if (!res.ok) {
-                throw new Error(filePath + ' update karne mein masla aaya! (Status: ' + res.status + ')');
+                throw new Error(filePath + ' save nahi ho saki (Code: ' + res.status + ')');
             }
             return await res.json();
         }
@@ -310,22 +322,25 @@
         document.getElementById('publish-news-form').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            var user = localStorage.getItem('np_gh_user');
-            var repo = localStorage.getItem('np_gh_repo');
-            var token = localStorage.getItem('np_gh_token');
+            var creds = cleanCredentials(
+                localStorage.getItem('np_gh_user') || userField.value,
+                localStorage.getItem('np_gh_repo') || repoField.value,
+                localStorage.getItem('np_gh_token') || tokenField.value
+            );
+
             var pubStatus = document.getElementById('publish-status');
             var pubBtn = document.getElementById('publish-btn');
 
-            if (!user || !repo || !token) {
+            if (!creds.user || !creds.repo || !creds.token) {
                 showStatus(pubStatus, 'status-error', 'Pehle upar Box #1 mein apna GitHub Username, Repo aur Token save karein!');
                 return;
             }
 
             pubBtn.disabled = true;
-            showStatus(pubStatus, 'status-loading', '<i class="fa-solid fa-spinner fa-spin"></i> GitHub se rabta ho raha hai aur khabar publish ki ja rahi hai...');
+            showStatus(pubStatus, 'status-loading', '<i class="fa-solid fa-spinner fa-spin"></i> GitHub (' + creds.user + '/' + creds.repo + ') se rabta ho raha hai...');
 
             try {
-                var newsFile = await getGitHubFile(user, repo, token, 'newsData.js');
+                var newsFile = await getGitHubFile(creds.user, creds.repo, creds.token, 'newsData.js');
                 var currentNewsCode = base64ToUtf8(newsFile.content);
 
                 var idMatches = currentNewsCode.match(/id:\s*(\d+)/g);
@@ -372,21 +387,21 @@
 
                 var insertPos = currentNewsCode.indexOf('[');
                 if (insertPos === -1) {
-                 throw new Error("newsData.js ka format sahi nahi hai!");
+                    throw new Error("newsData.js ka format sahi nahi hai!");
                 }
 
                 var updatedNewsCode = currentNewsCode.slice(0, insertPos + 1) + formattedBlock + currentNewsCode.slice(insertPos + 1);
 
-                await updateGitHubFile(user, repo, token, 'newsData.js', updatedNewsCode, newsFile.sha, 'Published News ID #' + nextId);
+                await updateGitHubFile(creds.user, creds.repo, creds.token, 'newsData.js', updatedNewsCode, newsFile.sha, 'Published News ID #' + nextId);
 
                 try {
-                    var sitemapFile = await getGitHubFile(user, repo, token, 'sitemap.xml');
+                    var sitemapFile = await getGitHubFile(creds.user, creds.repo, creds.token, 'sitemap.xml');
                     var currentSitemap = base64ToUtf8(sitemapFile.content);
-                    var newUrlLine = '  <url><loc>https://' + user + '.github.io/' + repo + '/news.html?id=' + nextId + '</loc><priority>0.8</priority></url>\n</urlset>';
+                    var newUrlLine = '  <url><loc>https://' + creds.user + '.github.io/' + creds.repo + '/news.html?id=' + nextId + '</loc><priority>0.8</priority></url>\n</urlset>';
                     
                     if (currentSitemap.includes('</urlset>')) {
                         var updatedSitemap = currentSitemap.replace('</urlset>', newUrlLine);
-                        await updateGitHubFile(user, repo, token, 'sitemap.xml', updatedSitemap, sitemapFile.sha, 'Added SEO URL for News ID #' + nextId);
+                        await updateGitHubFile(creds.user, creds.repo, creds.token, 'sitemap.xml', updatedSitemap, sitemapFile.sha, 'Added SEO URL for News ID #' + nextId);
                     }
                 } catch (sitemapErr) {
                     console.warn("Sitemap update skip hui:", sitemapErr);
@@ -402,5 +417,6 @@
             }
         });
     </script>
+
 </body>
 </html>
