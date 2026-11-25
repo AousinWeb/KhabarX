@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Har device (Mobile, Tablet, PC) par sahi dikhne ke liye -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHABARX</title>
+
+    
+    <!-- Agle step mein hum is CSS file ko banayenge -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================= HEADER SECTION ================= -->
+    <header class="main-header">
+        <!-- Left Side: Logo aur Website ka Naam -->
+       <div class="header-left">
+            <a href="index.html" class="brand">
+                <i class="fa-solid fa-newspaper logo-icon"><img src="pic/logo.png" alt=""></i>
+                <span class="site-name"></span>
+            </a>
+        </div>
+        <!-- Right Side: Search, Language Changer, aur Menu Button -->
+        <div class="header-right">
+            <!-- Search Icon -->
+            <button class="icon-btn" id="search-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"><img src="pic/search.PNG"></i>
+            </button>
+
+            <!-- Language Changer Icon -->
+            <button class="icon-btn" id="lang-btn" aria-label="Change Language">
+                <i class="fa-solid fa-globe"><img src="pic/language.PNG"></i>
+            </button>
+
+            <!-- Menu Button Icon -->
+            <button class="icon-btn" id="menu-btn" aria-label="Open Menu">
+                <i class="fa-solid fa-bars"><img src="pic/menu.PNG"></i>
+            </button>
+        </div>
+            <!-- ================= HIDDEN PANELS (Click karne par khulenge) ================= -->
+    
+    <!-- 1. Search Bar Panel -->
+      <!-- 1. Search Bar Panel (Search + Close Buttons ke saath) -->
+    <div id="search-panel" class="hidden-panel search-box-container">
+        <div class="search-inner">
+            <input type="text" id="search-input" placeholder="Search anything. Discover everything...">
+            <!-- Button 1: Search karne ke liye -->
+            <button id="submit-search" class="search-action-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"><img src="pic/search.PNG"></i>
+            </button>
+            <!-- Button 2: Band karne ke liye -->
+            <button id="close-search" class="close-btn" aria-label="Close">
+                <i class="fa-solid fa-xmark"><img src="pic/close.PNG"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. Language Dropdown Menu (3 Zabanein) -->
+    <div id="lang-panel" class="hidden-panel lang-dropdown">
+        <button class="lang-option active" data-lang="roman">English</button>
+        <button class="lang-option" data-lang="urdu">اردو (Urdu)</button>
+        <button class="lang-option" data-lang="english">Roman Urdu</button>
+    </div>
+
+    <!-- 3. Side Navigation Menu Drawer -->
+    <div id="menu-panel" class="hidden-panel side-menu">
+        <div class="menu-header">
+            <h2>KhabarX</h2>
+            <button id="close-menu" class="close-btn"><i class="fa-solid fa-xmark"><img src="pic/close.PNG"></i></button>
+        </div>
+        <ul class="menu-links">
+            <!-- Side Menu aur Footer ke Links ko aise update karein -->
+         <li><h4  class="catmenu">World Affairs</h4>
+            <a href="category.html?cat=International-Relations">International Relations</a>
+            <a href="category.html?cat=International-Conflicts">International Conflicts</a>
+            <a href="category.html?cat=World-Politics">World Politics</a>   
+            <a href="category.html?cat=Global-Organizations">Global Organizations</a>
+            <a href="category.html?cat=Current-Affairs">Current Affairs</a>
+            <a href="category.html?cat=Global-Issues">Global Issues</a>   
+            <hr>
+         </li>
+         <li><h4  class="catmenu">Business</h4>
+            <a href="category.html?cat=World-Economy">World Economy</a>
+            <a href="category.html?cat=Banking&Finance">Banking & Finance</a>
+            <a href="category.html?cat=Companies&Brands">Companies & Brands</a>   
+            <a href="category.html?cat=Inrerpreneurship">Interpreneurship</a>
+            <a href="category.html?cat=Industries">Industries</a>
+            <a href="category.html?cat=Cryptocurrency">Cryptocurrency</a>   
+            <hr>
+         </li>
+          <li><h4  class="catmenu">Technology</h4>
+            <a href="category.html?cat=AI">AI</a>
+            <a href="category.html?cat=Programming">Programming</a>
+            <a href="category.html?cat=Cybersecurity">Cybersecurity</a>   
+            <a href="category.html?cat=Robotics">Robotics</a>
+            <a href="category.html?cat=Software&Applications">Software & Applications</a>
+            <a href="category.html?cat=Computer-Science">Computer Science</a>   
+            <hr>
+         </li>
+         
+         <li><h4 class="catmenu">Support & helps </h4>
+            <a href="about.html">About Us</a></li>
+            <a href="contuct.html">Contact Us</a></li>
+            <a href="terms&conditions.html">Term & Conditions</a></li>
+            <a href="privacy-policy.html">Privacy Policy</a></li>
+            <a href="help.html">Helps</a></li>
+        </ul>
+        
+    </div>
+
+    </header>
+
+
+
+      <!-- ================= ABOUT US MAIN CONTENT (ENGLISH) ================= -->
+    <main id="news-container" class="about-main-wrapper">
+
+        <!-- 1. Hero Banner -->
+        <section class="about-hero">
+            <span class="about-pill"><i class="fa-solid fa-shield-halved"></i> TRUSTED DIGITAL JOURNALISM</span>
+            <h1>The Voice of Truth, With You in Every Language</h1>
+            <p>KhabarX is more than just a news website—it is a modern digital platform where every reader can access verified, timely stories in their preferred language: Roman Urdu, Urdu, or English.</p>
+        </section>
+
+        <!-- 2. Key Highlights / Stats Bar -->
+        <section class="about-stats-grid">
+            <div class="stat-box">
+                <i class="fa-solid fa-language"></i>
+                <h3>3 Languages</h3>
+                <p>Roman, Urdu & English Support</p>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>100% Verified</h3>
+                <p>Fact-Checked & Authentic News</p>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>24/7 Updates</h3>
+                <p>Real-Time Breaking Coverage</p>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h3>Fast & Modern</h3>
+                <p>Built for Every Screen Size</p>
+            </div>
+        </section>
+
+        <!-- 3. Our Story & Vision (2-Column Professional Layout) -->
+        <section class="about-story-section">
+            <div class="story-text">
+                <span class="sub-label">OUR STORY</span>
+                <h2>Why We Created KhabarX</h2>
+                <p>In today's fast-paced digital age, social media is often flooded with unverified rumors and misleading headlines. At the same time, millions of readers prefer reading news either in easy-to-follow <strong>Roman Urdu</strong>, traditional <strong>Urdu</strong>, or global <strong>English</strong>.</p>
+                <p>To bridge this gap, we founded <strong>KhabarX</strong>—a clutter-free platform where a single click switches the entire story into your chosen language, delivering only accurate and meaningful journalism.</p>
+                
+                <ul class="story-checklist">
+                    <li><i class="fa-solid fa-check-circle"></i> Unbiased, fact-based reporting without sensationalism</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Instant multi-language smart search and category filtering</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Comprehensive coverage across Pakistan, World, Sports, Tech, and Business</li>
+                </ul>
+            </div>
+
+            <div class="story-visual-card">
+                <div class="editorial-badge">
+                    <i class="fa-solid fa-award"></i>
+                    <div>
+                        <h4>Editorial Policy</h4>
+                        <span>Zero Fake News Guarantee</span>
+                    </div>
+                </div>
+                <p class="quote-text">"We believe the true purpose of journalism is not to confuse the public, but to inform, educate, and empower every reader with clarity."</p>
+                <div class="founder-sign">
+                    <strong>KhabarX Editorial Team</strong>
+                    <span>Serving Readers Worldwide</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Our 4 Core Pillars -->
+        <section class="about-pillars-section">
+            <div class="pillars-header">
+                <h2>Our 4 Core Principles</h2>
+                <p>The foundation behind our journalism and digital technology</p>
+            </div>
+
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <h3>Thorough Verification</h3>
+                    <p>Before publishing any report, our editorial team carefully cross-checks sources and facts for complete accuracy.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-globe"></i></div>
+                    <h3>Language Freedom</h3>
+                    <p>Whether you prefer Roman Urdu, Urdu, or English, every news story is readily available at your fingertips.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                    <h3>Lightning Speed</h3>
+                    <p>Built with lightweight, modern web technology so pages load smoothly even on slower mobile connections.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-users"></i></div>
+                    <h3>Voice of the People</h3>
+                    <p>We prioritize stories that matter most to everyday citizens, technological progress, and national achievements.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Call To Action (CTA Banner) -->
+        <section class="about-cta-banner">
+            <h2>Ready to Explore the Latest Headlines?</h2>
+            <p>Head back to our homepage to stay informed with real-time updates from Pakistan and around the world.</p>
+            <div class="cta-buttons">
+                <a href="index.html" class="cta-btn-primary"><i class="fa-solid fa-newspaper"></i> Read Latest News</a>
+                <a href="category.html?cat=Technology" class="cta-btn-secondary"><i class="fa-solid fa-microchip"></i> Tech Updates</a>
+            </div>
+        </section>
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+     <!-- ================= EXPERT LEVEL FOOTER SECTION ================= -->
+    <footer class="expert-footer">
+        <div class="footer-grid">
+            
+            <!-- Column 1: Website Info aur Social Icons -->
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <h3>KhabarX</h3>
+                </div>
+                <p>KhabarX is a global knowledge and information platform dedicated to exploring the world beyond what we know.</p>
+                <!-- <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div> -->
+            </div>
+
+            <!-- Column 2: News Categories -->
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                   <!-- Side Menu aur Footer ke Links ko aise update karein -->
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="category.html?cat=International-Relations">International Relations</a> </li>
+                 <li><a href="category.html?cat=International-Conflicts">International Conflicts</a></li>
+                 <li><a href="category.html?cat=World-Politics">World Politics</a></li>
+                 <li><a href="category.html?cat=Global-Organizations">Global Organizations</a></li>
+                 <li><a href="category.html?cat=Current-Affairs">Current Affairs</a></li>
+                <li><a href="category.html?cat=Global-Issues">Global Issues</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Column 3: Zaroori Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contuct.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms&conditions.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter Subscription -->
+            <div class="footer-col">
+                <h4>Daily Updates</h4>
+                <p data-translate="footerTagline">.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your Gmail..." required>
+                    <button type="submit" aria-label="Subscribe">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom: Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 KhabarX. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="newsData.js"></script>    
+    <script src="script.js"></script>
+    <script src="translations.js"></script>
+        
+
+
+</body>
+</html>

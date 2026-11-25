@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Har device (Mobile, Tablet, PC) par sahi dikhne ke liye -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHABARX</title>
+
+    
+    <!-- Agle step mein hum is CSS file ko banayenge -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================= HEADER SECTION ================= -->
+    <header class="main-header">
+        <!-- Left Side: Logo aur Website ka Naam -->
+       <div class="header-left">
+            <a href="index.html" class="brand">
+                <i class="fa-solid fa-newspaper logo-icon"><img src="pic/logo.png" alt=""></i>
+                <span class="site-name"></span>
+            </a>
+        </div>
+        <!-- Right Side: Search, Language Changer, aur Menu Button -->
+        <div class="header-right">
+            <!-- Search Icon -->
+            <button class="icon-btn" id="search-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"><img src="pic/search.PNG"></i>
+            </button>
+
+            <!-- Language Changer Icon -->
+            <button class="icon-btn" id="lang-btn" aria-label="Change Language">
+                <i class="fa-solid fa-globe"><img src="pic/language.PNG"></i>
+            </button>
+
+            <!-- Menu Button Icon -->
+            <button class="icon-btn" id="menu-btn" aria-label="Open Menu">
+                <i class="fa-solid fa-bars"><img src="pic/menu.PNG"></i>
+            </button>
+        </div>
+            <!-- ================= HIDDEN PANELS (Click karne par khulenge) ================= -->
+    
+    <!-- 1. Search Bar Panel -->
+      <!-- 1. Search Bar Panel (Search + Close Buttons ke saath) -->
+    <div id="search-panel" class="hidden-panel search-box-container">
+        <div class="search-inner">
+            <input type="text" id="search-input" placeholder="Search anything. Discover everything...">
+            <!-- Button 1: Search karne ke liye -->
+            <button id="submit-search" class="search-action-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"><img src="pic/search.PNG"></i>
+            </button>
+            <!-- Button 2: Band karne ke liye -->
+            <button id="close-search" class="close-btn" aria-label="Close">
+                <i class="fa-solid fa-xmark"><img src="pic/close.PNG"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. Language Dropdown Menu (3 Zabanein) -->
+    <div id="lang-panel" class="hidden-panel lang-dropdown">
+        <button class="lang-option active" data-lang="roman">English</button>
+        <button class="lang-option" data-lang="urdu">اردو (Urdu)</button>
+        <button class="lang-option" data-lang="english">Roman Urdu</button>
+    </div>
+
+    <!-- 3. Side Navigation Menu Drawer -->
+    <div id="menu-panel" class="hidden-panel side-menu">
+        <div class="menu-header">
+            <h2>KhabarX</h2>
+            <button id="close-menu" class="close-btn"><i class="fa-solid fa-xmark"><img src="pic/close.PNG"></i></button>
+        </div>
+        <ul class="menu-links">
+            <!-- Side Menu aur Footer ke Links ko aise update karein -->
+         <li><h4  class="catmenu">World Affairs</h4>
+            <a href="category.html?cat=International-Relations">International Relations</a>
+            <a href="category.html?cat=International-Conflicts">International Conflicts</a>
+            <a href="category.html?cat=World-Politics">World Politics</a>   
+            <a href="category.html?cat=Global-Organizations">Global Organizations</a>
+            <a href="category.html?cat=Current-Affairs">Current Affairs</a>
+            <a href="category.html?cat=Global-Issues">Global Issues</a>   
+            <hr>
+         </li>
+         <li><h4  class="catmenu">Business</h4>
+            <a href="category.html?cat=World-Economy">World Economy</a>
+            <a href="category.html?cat=Banking&Finance">Banking & Finance</a>
+            <a href="category.html?cat=Companies&Brands">Companies & Brands</a>   
+            <a href="category.html?cat=Inrerpreneurship">Interpreneurship</a>
+            <a href="category.html?cat=Industries">Industries</a>
+            <a href="category.html?cat=Cryptocurrency">Cryptocurrency</a>   
+            <hr>
+         </li>
+          <li><h4  class="catmenu">Technology</h4>
+            <a href="category.html?cat=AI">AI</a>
+            <a href="category.html?cat=Programming">Programming</a>
+            <a href="category.html?cat=Cybersecurity">Cybersecurity</a>   
+            <a href="category.html?cat=Robotics">Robotics</a>
+            <a href="category.html?cat=Software&Applications">Software & Applications</a>
+            <a href="category.html?cat=Computer-Science">Computer Science</a>   
+            <hr>
+         </li>
+         
+         <li><h4 class="catmenu">Support & helps </h4>
+            <a href="about.html">About Us</a></li>
+            <a href="contuct.html">Contact Us</a></li>
+            <a href="terms&conditions.html">Term & Conditions</a></li>
+            <a href="privacy-policy.html">Privacy Policy</a></li>
+            <a href="help.html">Helps</a></li>
+        </ul>
+        
+    </div>
+
+    </header>
+
+
+
+
+
+
+
+    <!-- ================= CONTACT US MAIN CONTENT ================= -->
+    <main id="news-container" class="policy-main-wrapper">
+
+        <!-- 1. Contact Hero Banner -->
+        <section class="policy-hero">
+            <span class="policy-pill"><i class="fa-solid fa-headset"></i> GET IN TOUCH</span>
+            <h1>Contact Us</h1>
+            <p>Have a breaking news tip, feedback, or a business inquiry? Our editorial and support team is ready to hear from you.</p>
+        </section>
+
+        <!-- 2. Quick Contact Info Cards (3 Cards) -->
+        <section class="policy-highlights">
+            <div class="highlight-card">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <h3>Editorial & Support Email</h3>
+                <p>contact@newsportal.com<br><small>For news tips & general queries</small></p>
+            </div>
+            <div class="highlight-card">
+                <i class="fa-solid fa-clock"></i>
+                <h3>Response Time</h3>
+                <p>Within 24 Hours<br><small>Monday – Sunday (24/7 Desk)</small></p>
+            </div>
+            <div class="highlight-card">
+                <i class="fa-solid fa-share-nodes"></i>
+                <h3>Social Media Desk</h3>
+                <p>@NewsPortalOfficial<br><small>Follow us for instant alerts</small></p>
+            </div>
+        </section>
+
+        <!-- 3. Interactive Contact Form & Editorial Guidelines -->
+        <section class="contact-main-grid">
+
+            <!-- Left Side: Contact Form -->
+            <div class="contact-form-card">
+                <h2><i class="fa-solid fa-paper-plane"></i> Send Us a Direct Message</h2>
+                <p class="form-subtext">Fill out the form below and our team will get back to you shortly.</p>
+
+                <form id="contact-page-form" class="pro-contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-name">Your Full Name *</label>
+                            <input type="text" id="contact-name" placeholder="Enter your name..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email">Email Address *</label>
+                            <input type="email" id="contact-email" placeholder="Enter your email..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-subject">Subject / Department *</label>
+                        <select id="contact-subject" required>
+                            <option value="General Inquiry">General Inquiry & Feedback</option>
+                            <option value="Breaking News Tip">Submit a Breaking News Tip</option>
+                            <option value="Correction Request">Report a Typo or Correction</option>
+                            <option value="Advertising">Advertising & Partnership</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">Your Message *</label>
+                        <textarea id="contact-message" rows="5" placeholder="Write your message or news details here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="contact-submit-btn">
+                        <i class="fa-solid fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+
+                <!-- Success Message Box (Form submit hone ke baad dikhega) -->
+                <div id="contact-success-box" class="contact-success-alert" style="display: none;">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>Message Sent Successfully!</h3>
+                    <p id="contact-success-text">Thank you for contacting KhabarX. We have received your message.</p>
+                    <button type="button" id="send-another-btn" class="reset-btn">Send Another Message</button>
+                </div>
+            </div>
+
+            <!-- Right Side: News Tip & Community Guidelines -->
+            <div class="contact-side-info">
+                <div class="side-info-box">
+                    <h3><i class="fa-solid fa-bullhorn"></i> Have a Breaking News Tip?</h3>
+                    <p>If you witness an important event or have verified information to share with our journalists, please select <strong>"Submit a Breaking News Tip"</strong> in the form.</p>
+                    <ul class="tip-rules">
+                        <li><i class="fa-solid fa-check"></i> Include accurate date, time, and location.</li>
+                        <li><i class="fa-solid fa-check"></i> Provide reliable sources or links if available.</li>
+                        <li><i class="fa-solid fa-check"></i> Your identity will remain 100% confidential.</li>
+                    </ul>
+                </div>
+
+                <div class="side-info-box dark-accent-box">
+                    <h3><i class="fa-solid fa-circle-question"></i> Need Quick Answers?</h3>
+                    <p>Before sending a message, check our Help Center for instant guides on changing languages, searching news, and browsing categories.</p>
+                    <a href="help.html" class="cta-btn-secondary" style="margin-top: 12px;">
+                        <i class="fa-solid fa-book-open"></i> Visit Help & FAQ
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+
+
+    
+
+
+
+     <!-- ================= EXPERT LEVEL FOOTER SECTION ================= -->
+    <footer class="expert-footer">
+        <div class="footer-grid">
+            
+            <!-- Column 1: Website Info aur Social Icons -->
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <h3>KhabarX</h3>
+                </div>
+                <p>KhabarX is a global knowledge and information platform dedicated to exploring the world beyond what we know.</p>
+                <!-- <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div> -->
+            </div>
+
+            <!-- Column 2: News Categories -->
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                   <!-- Side Menu aur Footer ke Links ko aise update karein -->
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="category.html?cat=International-Relations">International Relations</a> </li>
+                 <li><a href="category.html?cat=International-Conflicts">International Conflicts</a></li>
+                 <li><a href="category.html?cat=World-Politics">World Politics</a></li>
+                 <li><a href="category.html?cat=Global-Organizations">Global Organizations</a></li>
+                 <li><a href="category.html?cat=Current-Affairs">Current Affairs</a></li>
+                <li><a href="category.html?cat=Global-Issues">Global Issues</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Column 3: Zaroori Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contuct.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms&conditions.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter Subscription -->
+            <div class="footer-col">
+                <h4>Daily Updates</h4>
+                <p data-translate="footerTagline">.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your Gmail..." required>
+                    <button type="submit" aria-label="Subscribe">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom: Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 KhabarX. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="newsData.js"></script>    
+    <script src="script.js"></script>
+    <script src="translations.js"></script>
+        
+
+
+</body>
+</html>

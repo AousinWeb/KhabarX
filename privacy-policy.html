@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Har device (Mobile, Tablet, PC) par sahi dikhne ke liye -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHABARX</title>
+
+    
+    <!-- Agle step mein hum is CSS file ko banayenge -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================= HEADER SECTION ================= -->
+    <header class="main-header">
+        <!-- Left Side: Logo aur Website ka Naam -->
+       <div class="header-left">
+            <a href="index.html" class="brand">
+                <i class="fa-solid fa-newspaper logo-icon"><img src="pic/logo.png" alt=""></i>
+                <span class="site-name"></span>
+            </a>
+        </div>
+        <!-- Right Side: Search, Language Changer, aur Menu Button -->
+        <div class="header-right">
+            <!-- Search Icon -->
+            <button class="icon-btn" id="search-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"><img src="pic/search.PNG"></i>
+            </button>
+
+            <!-- Language Changer Icon -->
+            <button class="icon-btn" id="lang-btn" aria-label="Change Language">
+                <i class="fa-solid fa-globe"><img src="pic/language.PNG"></i>
+            </button>
+
+            <!-- Menu Button Icon -->
+            <button class="icon-btn" id="menu-btn" aria-label="Open Menu">
+                <i class="fa-solid fa-bars"><img src="pic/menu.PNG"></i>
+            </button>
+        </div>
+            <!-- ================= HIDDEN PANELS (Click karne par khulenge) ================= -->
+    
+    <!-- 1. Search Bar Panel -->
+      <!-- 1. Search Bar Panel (Search + Close Buttons ke saath) -->
+    <div id="search-panel" class="hidden-panel search-box-container">
+        <div class="search-inner">
+            <input type="text" id="search-input" placeholder="Search anything. Discover everything...">
+            <!-- Button 1: Search karne ke liye -->
+            <button id="submit-search" class="search-action-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"><img src="pic/search.PNG"></i>
+            </button>
+            <!-- Button 2: Band karne ke liye -->
+            <button id="close-search" class="close-btn" aria-label="Close">
+                <i class="fa-solid fa-xmark"><img src="pic/close.PNG"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. Language Dropdown Menu (3 Zabanein) -->
+    <div id="lang-panel" class="hidden-panel lang-dropdown">
+        <button class="lang-option active" data-lang="roman">English</button>
+        <button class="lang-option" data-lang="urdu">اردو (Urdu)</button>
+        <button class="lang-option" data-lang="english">Roman Urdu</button>
+    </div>
+
+    <!-- 3. Side Navigation Menu Drawer -->
+    <div id="menu-panel" class="hidden-panel side-menu">
+        <div class="menu-header">
+            <h2>KhabarX</h2>
+            <button id="close-menu" class="close-btn"><i class="fa-solid fa-xmark"><img src="pic/close.PNG"></i></button>
+        </div>
+        <ul class="menu-links">
+            <!-- Side Menu aur Footer ke Links ko aise update karein -->
+         <li><h4  class="catmenu">World Affairs</h4>
+            <a href="category.html?cat=International-Relations">International Relations</a>
+            <a href="category.html?cat=International-Conflicts">International Conflicts</a>
+            <a href="category.html?cat=World-Politics">World Politics</a>   
+            <a href="category.html?cat=Global-Organizations">Global Organizations</a>
+            <a href="category.html?cat=Current-Affairs">Current Affairs</a>
+            <a href="category.html?cat=Global-Issues">Global Issues</a>   
+            <hr>
+         </li>
+         <li><h4  class="catmenu">Business</h4>
+            <a href="category.html?cat=World-Economy">World Economy</a>
+            <a href="category.html?cat=Banking&Finance">Banking & Finance</a>
+            <a href="category.html?cat=Companies&Brands">Companies & Brands</a>   
+            <a href="category.html?cat=Inrerpreneurship">Interpreneurship</a>
+            <a href="category.html?cat=Industries">Industries</a>
+            <a href="category.html?cat=Cryptocurrency">Cryptocurrency</a>   
+            <hr>
+         </li>
+          <li><h4  class="catmenu">Technology</h4>
+            <a href="category.html?cat=AI">AI</a>
+            <a href="category.html?cat=Programming">Programming</a>
+            <a href="category.html?cat=Cybersecurity">Cybersecurity</a>   
+            <a href="category.html?cat=Robotics">Robotics</a>
+            <a href="category.html?cat=Software&Applications">Software & Applications</a>
+            <a href="category.html?cat=Computer-Science">Computer Science</a>   
+            <hr>
+         </li>
+         
+         <li><h4 class="catmenu">Support & helps </h4>
+            <a href="about.html">About Us</a></li>
+            <a href="contuct.html">Contact Us</a></li>
+            <a href="terms&conditions.html">Term & Conditions</a></li>
+            <a href="privacy-policy.html">Privacy Policy</a></li>
+            <a href="help.html">Helps</a></li>
+        </ul>
+        
+    </div>
+
+    </header>
+
+
+
+
+
+
+
+
+    <!-- ================= PRIVACY POLICY MAIN CONTENT (ENGLISH) ================= -->
+    <main id="news-container" class="policy-main-wrapper">
+
+        <!-- 1. Policy Hero Banner -->
+        <section class="policy-hero">
+            <span class="policy-pill"><i class="fa-solid fa-user-shield"></i> LEGAL & TRANSPARENCY</span>
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is critically important to us. This policy outlines how KhabarX collects, uses, and protects your information when you visit our website.</p>
+            <div class="policy-updated">
+                <i class="fa-regular fa-calendar-check"></i> Last Updated: November 21, 2026
+            </div>
+        </section>
+
+        <!-- 2. Quick Privacy Highlights (3 Cards) -->
+        <section class="policy-highlights">
+            <div class="highlight-card">
+                <i class="fa-solid fa-lock"></i>
+                <h3>Zero Data Selling</h3>
+                <p>We never sell, rent, or trade your personal information or email address to third parties.</p>
+            </div>
+            <div class="highlight-card">
+                <i class="fa-solid fa-cookie-bite"></i>
+                <h3>Smart Local Storage</h3>
+                <p>We use browser storage solely to remember your preferred reading language (Roman, Urdu, or English).</p>
+            </div>
+            <div class="highlight-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Safe Browsing</h3>
+                <p>Our platform is built with modern security standards to ensure a safe reading experience on every device.</p>
+            </div>
+        </section>
+
+        <!-- 3. Detailed Policy Clauses -->
+        <section class="policy-document-box">
+            
+            <div class="policy-clause">
+                <h2>1. Introduction</h2>
+                <p>Welcome to <strong>KhabarX</strong>. By accessing and using our website, you agree to the practices described in this Privacy Policy. If you do not agree with any part of this policy, please discontinue use of our website.</p>
+            </div>
+
+            <div class="policy-clause">
+                <h2>2. Information We Collect</h2>
+                <p>We believe in minimal data collection. When you browse our news articles, we do not require you to create an account. However, we may collect limited information in the following ways:</p>
+                <ul>
+                    <li><strong>Newsletter Subscriptions:</strong> If you voluntarily subscribe to our Daily Updates in the footer, we collect your email address to send you news alerts.</li>
+                    <li><strong>Log & Device Data:</strong> Like most standard websites, our servers may automatically record non-personal technical data such as your browser type, device screen size, and general region to optimize website performance.</li>
+                </ul>
+            </div>
+
+            <div class="policy-clause">
+                <h2>3. Local Storage & Cookies</h2>
+                <p>KhabarX uses browser <strong>Local Storage</strong> to enhance your user experience. Specifically, when you select a preferred language (Roman Urdu, Urdu, or English) from the top menu, that preference is saved locally on your device so you do not have to re-select it on every page. You can clear this data anytime through your browser settings.</p>
+            </div>
+
+            <div class="policy-clause">
+                <h2>4. How We Use Your Information</h2>
+                <p>Any information collected is used strictly to:</p>
+                <ul>
+                    <li>Deliver accurate, real-time news in your chosen language.</li>
+                    <li>Improve website speed, mobile responsiveness, and search accuracy.</li>
+                    <li>Send daily news digests to users who have explicitly opted into our newsletter.</li>
+                </ul>
+            </div>
+
+            <div class="policy-clause">
+                <h2>5. Third-Party Links & Advertising</h2>
+                <p>Our articles may occasionally contain links to external websites or third-party media resources. Please note that we do not control the privacy practices of external sites. Additionally, if we display third-party advertisements (such as Google AdSense) in the future, those partners may use cookies to serve relevant ads based on your browsing interests.</p>
+            </div>
+
+            <div class="policy-clause">
+                <h2>6. Your Privacy Rights</h2>
+                <p>You have the right to request access to, correction of, or deletion of any personal data (such as your newsletter email) that you have shared with us. You may also unsubscribe from our emails at any time.</p>
+            </div>
+
+            <div class="policy-clause">
+                <h2>7. Contact Us Regarding Privacy</h2>
+                <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please reach out to our editorial and compliance team through our <strong>Contact Us</strong> page.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+
+    
+
+
+
+     <!-- ================= EXPERT LEVEL FOOTER SECTION ================= -->
+    <footer class="expert-footer">
+        <div class="footer-grid">
+            
+            <!-- Column 1: Website Info aur Social Icons -->
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <h3>KhabarX</h3>
+                </div>
+                <p>KhabarX is a global knowledge and information platform dedicated to exploring the world beyond what we know.</p>
+                <!-- <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div> -->
+            </div>
+
+            <!-- Column 2: News Categories -->
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                   <!-- Side Menu aur Footer ke Links ko aise update karein -->
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="category.html?cat=International-Relations">International Relations</a> </li>
+                 <li><a href="category.html?cat=International-Conflicts">International Conflicts</a></li>
+                 <li><a href="category.html?cat=World-Politics">World Politics</a></li>
+                 <li><a href="category.html?cat=Global-Organizations">Global Organizations</a></li>
+                 <li><a href="category.html?cat=Current-Affairs">Current Affairs</a></li>
+                <li><a href="category.html?cat=Global-Issues">Global Issues</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Column 3: Zaroori Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contuct.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms&conditions.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter Subscription -->
+            <div class="footer-col">
+                <h4>Daily Updates</h4>
+                <p data-translate="footerTagline">.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your Gmail..." required>
+                    <button type="submit" aria-label="Subscribe">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom: Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 KhabarX. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="newsData.js"></script>    
+    <script src="script.js"></script>
+    <script src="translations.js"></script>
+        
+
+
+</body>
+</html>

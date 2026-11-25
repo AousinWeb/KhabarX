@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Har device (Mobile, Tablet, PC) par sahi dikhne ke liye -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHABARX</title>
+
+    
+    <!-- Agle step mein hum is CSS file ko banayenge -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================= HEADER SECTION ================= -->
+    <header class="main-header">
+        <!-- Left Side: Logo aur Website ka Naam -->
+       <div class="header-left">
+            <a href="index.html" class="brand">
+                <i class="fa-solid fa-newspaper logo-icon"><img src="pic/logo.png" alt=""></i>
+                <span class="site-name"></span>
+            </a>
+        </div>
+        <!-- Right Side: Search, Language Changer, aur Menu Button -->
+        <div class="header-right">
+            <!-- Search Icon -->
+            <button class="icon-btn" id="search-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"><img src="pic/search.PNG"></i>
+            </button>
+
+            <!-- Language Changer Icon -->
+            <button class="icon-btn" id="lang-btn" aria-label="Change Language">
+                <i class="fa-solid fa-globe"><img src="pic/language.PNG"></i>
+            </button>
+
+            <!-- Menu Button Icon -->
+            <button class="icon-btn" id="menu-btn" aria-label="Open Menu">
+                <i class="fa-solid fa-bars"><img src="pic/menu.PNG"></i>
+            </button>
+        </div>
+            <!-- ================= HIDDEN PANELS (Click karne par khulenge) ================= -->
+    
+    <!-- 1. Search Bar Panel -->
+      <!-- 1. Search Bar Panel (Search + Close Buttons ke saath) -->
+    <div id="search-panel" class="hidden-panel search-box-container">
+        <div class="search-inner">
+            <input type="text" id="search-input" placeholder="Search anything. Discover everything...">
+            <!-- Button 1: Search karne ke liye -->
+            <button id="submit-search" class="search-action-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"><img src="pic/search.PNG"></i>
+            </button>
+            <!-- Button 2: Band karne ke liye -->
+            <button id="close-search" class="close-btn" aria-label="Close">
+                <i class="fa-solid fa-xmark"><img src="pic/close.PNG"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. Language Dropdown Menu (3 Zabanein) -->
+    <div id="lang-panel" class="hidden-panel lang-dropdown">
+        <button class="lang-option active" data-lang="roman">English</button>
+        <button class="lang-option" data-lang="urdu">اردو (Urdu)</button>
+        <button class="lang-option" data-lang="english">Roman Urdu</button>
+    </div>
+
+    <!-- 3. Side Navigation Menu Drawer -->
+    <div id="menu-panel" class="hidden-panel side-menu">
+        <div class="menu-header">
+            <h2>KhabarX</h2>
+            <button id="close-menu" class="close-btn"><i class="fa-solid fa-xmark"><img src="pic/close.PNG"></i></button>
+        </div>
+        <ul class="menu-links">
+            <!-- Side Menu aur Footer ke Links ko aise update karein -->
+         <li><h4  class="catmenu">World Affairs</h4>
+            <a href="category.html?cat=International-Relations">International Relations</a>
+            <a href="category.html?cat=International-Conflicts">International Conflicts</a>
+            <a href="category.html?cat=World-Politics">World Politics</a>   
+            <a href="category.html?cat=Global-Organizations">Global Organizations</a>
+            <a href="category.html?cat=Current-Affairs">Current Affairs</a>
+            <a href="category.html?cat=Global-Issues">Global Issues</a>   
+            <hr>
+         </li>
+         <li><h4  class="catmenu">Business</h4>
+            <a href="category.html?cat=World-Economy">World Economy</a>
+            <a href="category.html?cat=Banking&Finance">Banking & Finance</a>
+            <a href="category.html?cat=Companies&Brands">Companies & Brands</a>   
+            <a href="category.html?cat=Inrerpreneurship">Interpreneurship</a>
+            <a href="category.html?cat=Industries">Industries</a>
+            <a href="category.html?cat=Cryptocurrency">Cryptocurrency</a>   
+            <hr>
+         </li>
+          <li><h4  class="catmenu">Technology</h4>
+            <a href="category.html?cat=AI">AI</a>
+            <a href="category.html?cat=Programming">Programming</a>
+            <a href="category.html?cat=Cybersecurity">Cybersecurity</a>   
+            <a href="category.html?cat=Robotics">Robotics</a>
+            <a href="category.html?cat=Software&Applications">Software & Applications</a>
+            <a href="category.html?cat=Computer-Science">Computer Science</a>   
+            <hr>
+         </li>
+         
+         <li><h4 class="catmenu">Support & helps </h4>
+            <a href="about.html">About Us</a></li>
+            <a href="contuct.html">Contact Us</a></li>
+            <a href="terms&conditions.html">Term & Conditions</a></li>
+            <a href="privacy-policy.html">Privacy Policy</a></li>
+            <a href="help.html">Helps</a></li>
+        </ul>
+        
+    </div>
+
+    </header>
+
+
+
+
+
+
+
+
+
+
+    <!-- ================= TERMS & CONDITIONS MAIN CONTENT (ENGLISH) ================= -->
+    <main id="news-container" class="policy-main-wrapper">
+
+        <!-- 1. Terms Hero Banner -->
+        <section class="policy-hero">
+            <span class="policy-pill"><i class="fa-solid fa-scale-balanced"></i> TERMS OF SERVICE</span>
+            <h1>Terms & Conditions</h1>
+            <p>Please read these Terms and Conditions carefully before using KhabarX. By accessing or reading content on our platform, you agree to be bound by these terms.</p>
+            <div class="policy-updated">
+                <i class="fa-regular fa-calendar-check"></i> Effective Date: November 21, 2026
+            </div>
+        </section>
+
+        <!-- 2. Quick Key Rules (3 Cards) -->
+        <section class="policy-highlights">
+            <div class="highlight-card">
+                <i class="fa-solid fa-copyright"></i>
+                <h3>Content Ownership</h3>
+                <p>All articles, translations, logos, and site designs belong exclusively to KhabarX.</p>
+            </div>
+            <div class="highlight-card">
+                <i class="fa-solid fa-circle-info"></i>
+                <h3>Informational Purpose</h3>
+                <p>Our news reports are published for general awareness and educational purposes only.</p>
+            </div>
+            <div class="highlight-card">
+                <i class="fa-solid fa-handshake"></i>
+                <h3>Fair & Lawful Use</h3>
+                <p>Visitors must use our website responsibly without disrupting services or scraping data.</p>
+            </div>
+        </section>
+
+        <!-- 3. Detailed Terms Clauses -->
+        <section class="policy-document-box">
+            
+            <div class="policy-clause">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By visiting and using <strong>KhabarX</strong>, you acknowledge that you have read, understood, and agreed to comply with these Terms & Conditions and all applicable laws. If you do not agree with any part of these terms, you must refrain from using our website.</p>
+            </div>
+
+            <div class="policy-clause">
+                <h2>2. Intellectual Property Rights</h2>
+                <p>Unless otherwise stated, KhabarX and its editorial team own the intellectual property rights for all original articles, multi-language translations (Roman Urdu, Urdu, and English), graphics, and website code published on this platform. You may share links to our articles on social media, provided proper credit is given to KhabarX.</p>
+                <ul>
+                    <li>You must not republish or sell our articles as your own work without written permission.</li>
+                    <li>You must not copy, mirror, or redistribute our website layout or database structure.</li>
+                </ul>
+            </div>
+
+            <div class="policy-clause">
+                <h2>3. Accuracy of News & Disclaimer</h2>
+                <p>While our team strives to verify every story before publication, <strong>KhabarX</strong> makes no absolute warranties regarding the completeness, reliability, or real-time accuracy of every report. Breaking news evolves rapidly, and updates may be added as new facts emerge. Any action you take upon the information found on this website is strictly at your own risk.</p>
+            </div>
+
+            <div class="policy-clause">
+                <h2>4. Acceptable User Conduct</h2>
+                <p>When interacting with our search engine, newsletter, or contact forms, you agree not to:</p>
+                <ul>
+                    <li>Use the website in any way that causes damage, slowdowns, or security vulnerabilities.</li>
+                    <li>Use automated bots, scrapers, or data-mining tools to extract news articles from our platform.</li>
+                    <li>Submit false, spam, or harmful messages through our subscription or contact channels.</li>
+                </ul>
+            </div>
+
+            <div class="policy-clause">
+                <h2>5. External Links & Third-Party Content</h2>
+                <p>Our articles may include references or links to external third-party websites for additional context. KhabarX has no control over the content, availability, or policies of those external sites and does not endorse every view expressed on them.</p>
+            </div>
+
+            <div class="policy-clause">
+                <h2>6. Limitation of Liability</h2>
+                <p>In no event shall KhabarX, its founders, or its contributors be liable for any direct, indirect, or incidental damages arising out of your access to, use of, or inability to use this website.</p>
+            </div>
+
+            <div class="policy-clause">
+                <h2>7. Changes to These Terms</h2>
+                <p>We reserve the right to revise or update these Terms & Conditions at any time without prior notice. By continuing to use KhabarX after changes are posted, you agree to the updated terms.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    
+
+
+
+     <!-- ================= EXPERT LEVEL FOOTER SECTION ================= -->
+    <footer class="expert-footer">
+        <div class="footer-grid">
+            
+            <!-- Column 1: Website Info aur Social Icons -->
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <h3>KhabarX</h3>
+                </div>
+                <p>KhabarX is a global knowledge and information platform dedicated to exploring the world beyond what we know.</p>
+                <!-- <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div> -->
+            </div>
+
+            <!-- Column 2: News Categories -->
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                   <!-- Side Menu aur Footer ke Links ko aise update karein -->
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="category.html?cat=International-Relations">International Relations</a> </li>
+                 <li><a href="category.html?cat=International-Conflicts">International Conflicts</a></li>
+                 <li><a href="category.html?cat=World-Politics">World Politics</a></li>
+                 <li><a href="category.html?cat=Global-Organizations">Global Organizations</a></li>
+                 <li><a href="category.html?cat=Current-Affairs">Current Affairs</a></li>
+                <li><a href="category.html?cat=Global-Issues">Global Issues</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Column 3: Zaroori Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contuct.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms&conditions.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter Subscription -->
+            <div class="footer-col">
+                <h4>Daily Updates</h4>
+                <p data-translate="footerTagline">.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your Gmail..." required>
+                    <button type="submit" aria-label="Subscribe">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom: Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 KhabarX. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="newsData.js"></script>    
+    <script src="script.js"></script>
+    <script src="translations.js"></script>
+        
+
+
+</body>
+</html>

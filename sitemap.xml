@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://sitemaps.org">
+  <!-- Main Pages -->
+  <url><loc>https://github.io</loc><priority>1.0</priority></url>
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io</loc><priority>0.7</priority></url>
+  <url><loc>https://github.io</loc><priority>0.5</priority></url>
+  <url><loc>https://github.io</loc><priority>0.5</priority></url>
+
+  <!-- Categories -->
+  <url><loc>https://github.io</loc><priority>0.9</priority></url>
+  <url><loc>https://github.io</loc><priority>0.9</priority></url>
+  <url><loc>https://github.io</loc><priority>0.9</priority></url>
+  <url><loc>https://github.io</loc><priority>0.9</priority></url>
+  <url><loc>https://github.io</loc><priority>0.9</priority></url>
+  <url><loc>https://github.io</loc><priority>0.9</priority></url>
+
+  <!-- 15 News Articles -->
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io0</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io1</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io2</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io3</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io4</loc><priority>0.8</priority></url>
+  <url><loc>https://github.io5</loc><priority>0.8</priority></url>
+</urlset>

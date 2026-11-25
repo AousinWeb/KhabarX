@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google ko is secret page ko index karne se rokne ke liye -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>Secret Admin Publisher - KhabarX</title>
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #dc2626;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --text: #1e293b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); padding-bottom: 50px; }
+        
+        .admin-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--accent);
+        }
+        .admin-header h1 { font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .admin-header h1 i { color: var(--accent); }
+        .home-link { color: white; text-decoration: none; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 6px; font-size: 0.9rem; }
+        
+        .container { max-width: 900px; margin: 30px auto; padding: 0 4%; }
+        .box { background: var(--card); padding: 28px; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); margin-bottom: 25px; }
+        .box h2 { font-size: 1.3rem; color: var(--primary); margin-bottom: 15px; border-left: 4px solid var(--accent); padding-left: 12px; }
+        
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        
+        .form-group { margin-bottom: 16px; }
+        label { display: block; font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; color: #334155; }
+        input, select, textarea {
+            width: 100%; padding: 11px 14px; border: 1px solid #cbd5e1; border-radius: 8px;
+            font-size: 0.95rem; background: #f8fafc; outline: none;
+        }
+        input:focus, select:focus, textarea:focus { border-color: var(--accent); background: #fff; }
+        .urdu-input { direction: rtl; text-align: right; font-size: 1.05rem; }
+        
+        .lang-section { background: #f8fafc; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
+        .lang-title { font-weight: 800; color: var(--accent); margin-bottom: 12px; font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+        
+        .btn {
+            background: var(--accent); color: white; border: none; padding: 14px 24px;
+            border-radius: 8px; font-size: 1.05rem; font-weight: 700; cursor: pointer;
+            width: 100%; display: flex; justify-content: center; align-items: center; gap: 10px;
+        }
+        .btn:hover { background: #b91c1c; }
+        .btn-dark { background: var(--primary); }
+        .btn-dark:hover { background: #1e293b; }
+        
+        .status-msg { padding: 15px; border-radius: 8px; margin-top: 15px; display: none; font-weight: 600; line-height: 1.5; }
+        .status-loading { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+        .status-success { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+        .status-error { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+
+        @media (max-width: 768px) {
+            .grid-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="admin-header">
+        <h1><i class="fa-solid fa-user-secret"></i> Secret News Publisher</h1>
+        <a href="index.html" class="home-link"><i class="fa-solid fa-globe"></i> View Website</a>
+    </header>
+
+    <div class="container">
+
+        <!-- STEP 1: GITHUB CONNECTION SETTINGS -->
+        <div class="box">
+            <h2><i class="fa-brands fa-github"></i> 1. GitHub Auto-Save Connection</h2>
+            <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 15px;">Yeh maloomat sirf aapke is mobile/computer ke browser mein safe rahegi.</p>
+            
+            <div class="grid-3">
+                <div class="form-group">
+                    <label>GitHub Username *</label>
+                    <input type="text" id="gh-user" placeholder="e.g. ali-khan">
+                </div>
+                <div class="form-group">
+                    <label>Repository Name *</label>
+                    <input type="text" id="gh-repo" placeholder="e.g. news-portal">
+                </div>
+                <div class="form-group">
+                    <label>GitHub Secret Token *</label>
+                    <input type="password" id="gh-token" placeholder="github_pat_...">
+                </div>
+            </div>
+            <button type="button" id="save-gh-btn" class="btn btn-dark" style="padding: 10px;">
+                <i class="fa-solid fa-floppy-disk"></i> Save GitHub Settings
+            </button>
+            <div id="gh-save-status" class="status-msg"></div>
+        </div>
+
+        <!-- STEP 2: NEWS POST FORM (Aapki Saari Categories ke Saath) -->
+        <div class="box">
+            <h2><i class="fa-solid fa-pen-to-square"></i> 2. Nayi Khabar Publish Karein</h2>
+            
+            <form id="publish-news-form">
+                <div class="grid-3">
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="news-category" required>
+                            <optgroup label="World Affairs">
+                                <option value="International-Relations">International Relations</option>
+                                <option value="International-Conflicts">International Conflicts</option>
+                                <option value="World-Politics">World Politics</option>
+                                <option value="Global-Organizations">Global Organizations</option>
+                                <option value="Current-Affairs">Current Affairs</option>
+                                <option value="Global-Issues">Global Issues</option>
+                            </optgroup>
+                            <optgroup label="Business">
+                                <option value="World-Economy">World Economy</option>
+                                <option value="Banking-and-Finance">Banking & Finance</option>
+                                <option value="Companies-and-Brands">Companies & Brands</option>
+                                <option value="Entrepreneurship">Entrepreneurship</option>
+                                <option value="Industries">Industries</option>
+                                <option value="Cryptocurrency">Cryptocurrency</option>
+                            </optgroup>
+                            <optgroup label="Technology">
+                                <option value="AI">AI</option>
+                                <option value="Programming">Programming</option>
+                                <option value="Cybersecurity">Cybersecurity</option>
+                                <option value="Robotics">Robotics</option>
+                                <option value="Software-and-Applications">Software & Applications</option>
+                                <option value="Computer-Science">Computer Science</option>
+                            </optgroup>
+                            <optgroup label="Education">
+                                <option value="Higher-Education">Higher Education</option>
+                                <option value="Scholarships-and-Study">Scholarships & Study Abroad</option>
+                                <option value="EdTech-and-Learning">EdTech & Online Learning</option>
+                                <option value="Science-and-Research">Science & Research</option>
+                            </optgroup>
+                            <optgroup label="Health">
+                                <option value="Medical-Science">Medical Science</option>
+                                <option value="Mental-Health">Mental Health</option>
+                                <option value="Nutrition-and-Fitness">Nutrition & Fitness</option>
+                                <option value="Public-Health">Public Health</option>
+                            </optgroup>
+                            <optgroup label="History">
+                                <option value="World-History">World History</option>
+                                <option value="Islamic-and-Asian-History">Islamic & Asian History</option>
+                                <option value="Ancient-Civilizations">Ancient Civilizations</option>
+                                <option value="Historical-Events">Historical Events</option>
+                            </optgroup>
+                            <optgroup label="Philosophy">
+                                <option value="Ethics-and-Morality">Ethics & Morality</option>
+                                <option value="Logic-and-Reason">Logic & Reason</option>
+                                <option value="Political-Philosophy">Political Philosophy</option>
+                                <option value="Great-Thinkers">Great Thinkers</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Popularity Status *</label>
+                        <select id="news-status" required>
+                            <option value="1">1 - Full Popular (Trending Top)</option>
+                            <option value="2" selected>2 - Normal News</option>
+                            <option value="0">0 - Less Popular</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL (Tasveer ka Link) *</label>
+                        <input type="url" id="news-image" placeholder="https://unsplash.com..." required>
+                    </div>
+                </div>
+
+                <div class="lang-section">
+                    <div class="lang-title"><i class="fa-solid fa-language"></i> Roman Urdu Details</div>
+                    <div class="form-group">
+                        <label>Title (Roman Urdu) *</label>
+                        <input type="text" id="roman-title" placeholder="Khabar ki surkhi likhein..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Short Summary (Roman Urdu) *</label>
+                        <input type="text" id="roman-summary" placeholder="2 line ka mukhtasar khulasa..." required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label>Full News Content (Roman Urdu) *</label>
+                        <textarea id="roman-content" rows="4" placeholder="Poori khabar ki tafseel yahan likhein..." required></textarea>
+                    </div>
+                </div>
+
+                <div class="lang-section">
+                    <div class="lang-title"><i class="fa-solid fa-language"></i> اردو تفصیلات (Urdu)</div>
+                    <div class="form-group">
+                        <label style="text-align: right;">خبر کی سرخی (Title) *</label>
+                        <input type="text" id="urdu-title" class="urdu-input" placeholder="خبر کی سرخی یہاں لکھیں..." required>
+                    </div>
+                    <div class="form-group">
+                        <label style="text-align: right;">مختصر خلاصہ (Summary) *</label>
+                        <input type="text" id="urdu-summary" class="urdu-input" placeholder="مختصر خلاصہ یہاں لکھیں..." required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label style="text-align: right;">مکمل خبر (Full Content) *</label>
+                        <textarea id="urdu-content" class="urdu-input" rows="4" placeholder="پوری خبر کی تفصیل یہاں لکھیں..." required></textarea>
+                    </div>
+                </div>
+
+                <div class="lang-section">
+                    <div class="lang-title"><i class="fa-solid fa-language"></i> English Details</div>
+                    <div class="form-group">
+                        <label>Headline (English) *</label>
+                        <input type="text" id="english-title" placeholder="Enter news headline..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Short Summary (English) *</label>
+                        <input type="text" id="english-summary" placeholder="Enter short summary..." required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label>Full Story (English) *</label>
+                        <textarea id="english-content" rows="4" placeholder="Write complete news report..." required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" id="publish-btn">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Publish News Live on GitHub
+                </button>
+            </form>
+
+            <div id="publish-status" class="status-msg"></div>
+        </div>
+    </div>
+
+    <script>
+        function utf8ToBase64(str) {
+            return btoa(unescape(encodeURIComponent(str)));
+        }
+
+        function base64ToUtf8(str) {
+            return decodeURIComponent(escape(atob(str)));
+        }
+
+        var userField = document.getElementById('gh-user');
+        var repoField = document.getElementById('gh-repo');
+        var tokenField = document.getElementById('gh-token');
+        var ghStatus = document.getElementById('gh-save-status');
+
+        userField.value = localStorage.getItem('np_gh_user') || '';
+        repoField.value = localStorage.getItem('np_gh_repo') || '';
+        tokenField.value = localStorage.getItem('np_gh_token') || '';
+
+        document.getElementById('save-gh-btn').addEventListener('click', function() {
+            var u = userField.value.trim();
+            var r = repoField.value.trim();
+            var t = tokenField.value.trim();
+
+            if (!u || !r || !t) {
+                showStatus(ghStatus, 'status-error', 'Baraye meharbani Username, Repository, aur Token teeno likhein!');
+                return;
+            }
+
+            localStorage.setItem('np_gh_user', u);
+            localStorage.setItem('np_gh_repo', r);
+            localStorage.setItem('np_gh_token', t);
+            showStatus(ghStatus, 'status-success', 'GitHub Settings is browser mein mehfooz ho gayi hain!');
+        });
+
+        function showStatus(el, typeClass, msg) {
+            el.className = 'status-msg ' + typeClass;
+            el.innerHTML = msg;
+            el.style.display = 'block';
+        }
+
+        async function getGitHubFile(user, repo, token, filePath) {
+            var url = 'https://github.com' + user + '/' + repo + '/contents/' + filePath;
+            var res = await fetch(url, {
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            });
+            if (!res.ok) {
+                throw new Error(filePath + ' file nahi mili ya GitHub Token ghalat hai! (Status: ' + res.status + ')');
+            }
+            return await res.json();
+        }
+
+        async function updateGitHubFile(user, repo, token, filePath, newContent, sha, commitMsg) {
+            var url = 'https://github.com' + user + '/' + repo + '/contents/' + filePath;
+            var res = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: commitMsg,
+                    content: utf8ToBase64(newContent),
+                    sha: sha
+                })
+            });
+            if (!res.ok) {
+                throw new Error(filePath + ' update karne mein masla aaya! (Status: ' + res.status + ')');
+            }
+            return await res.json();
+        }
+
+        document.getElementById('publish-news-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            var user = localStorage.getItem('np_gh_user');
+            var repo = localStorage.getItem('np_gh_repo');
+            var token = localStorage.getItem('np_gh_token');
+            var pubStatus = document.getElementById('publish-status');
+            var pubBtn = document.getElementById('publish-btn');
+
+            if (!user || !repo || !token) {
+                showStatus(pubStatus, 'status-error', 'Pehle upar Box #1 mein apna GitHub Username, Repo aur Token save karein!');
+                return;
+            }
+
+            pubBtn.disabled = true;
+            showStatus(pubStatus, 'status-loading', '<i class="fa-solid fa-spinner fa-spin"></i> GitHub se rabta ho raha hai aur khabar publish ki ja rahi hai...');
+
+            try {
+                var newsFile = await getGitHubFile(user, repo, token, 'newsData.js');
+                var currentNewsCode = base64ToUtf8(newsFile.content);
+
+                var idMatches = currentNewsCode.match(/id:\s*(\d+)/g);
+                var maxId = 0;
+                if (idMatches) {
+                    idMatches.forEach(function(m) {
+                        var num = parseInt(m.replace(/\D/g, ''), 10);
+                        if (num > maxId) maxId = num;
+                    });
+                }
+                var nextId = maxId + 1;
+
+                var now = new Date();
+                var isoDate = now.getFullYear() + '-' +
+                    String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                    String(now.getDate()).padStart(2, '0') + 'T' +
+                    String(now.getHours()).padStart(2, '0') + ':' +
+                    String(now.getMinutes()).padStart(2, '0') + ':00';
+
+                var newArticleObj = {
+                    id: nextId,
+                    category: document.getElementById('news-category').value,
+                    date: isoDate,
+                    status: parseInt(document.getElementById('news-status').value, 10),
+                    image: document.getElementById('news-image').value.trim(),
+                    roman: {
+                        title: document.getElementById('roman-title').value.trim(),
+                        summary: document.getElementById('roman-summary').value.trim(),
+                        content: document.getElementById('roman-content').value.trim()
+                    },
+                    urdu: {
+                        title: document.getElementById('urdu-title').value.trim(),
+                        summary: document.getElementById('urdu-summary').value.trim(),
+                        content: document.getElementById('urdu-content').value.trim()
+                    },
+                    english: {
+                        title: document.getElementById('english-title').value.trim(),
+                        summary: document.getElementById('english-summary').value.trim(),
+                        content: document.getElementById('english-content').value.trim()
+                    }
+                };
+
+                var formattedBlock = "\n    " + JSON.stringify(newArticleObj, null, 4).replace(/\n/g, "\n    ") + ",";
+
+                var insertPos = currentNewsCode.indexOf('[');
+                if (insertPos === -1) {
+                 throw new Error("newsData.js ka format sahi nahi hai!");
+                }
+
+                var updatedNewsCode = currentNewsCode.slice(0, insertPos + 1) + formattedBlock + currentNewsCode.slice(insertPos + 1);
+
+                await updateGitHubFile(user, repo, token, 'newsData.js', updatedNewsCode, newsFile.sha, 'Published News ID #' + nextId);
+
+                try {
+                    var sitemapFile = await getGitHubFile(user, repo, token, 'sitemap.xml');
+                    var currentSitemap = base64ToUtf8(sitemapFile.content);
+                    var newUrlLine = '  <url><loc>https://' + user + '.github.io/' + repo + '/news.html?id=' + nextId + '</loc><priority>0.8</priority></url>\n</urlset>';
+                    
+                    if (currentSitemap.includes('</urlset>')) {
+                        var updatedSitemap = currentSitemap.replace('</urlset>', newUrlLine);
+                        await updateGitHubFile(user, repo, token, 'sitemap.xml', updatedSitemap, sitemapFile.sha, 'Added SEO URL for News ID #' + nextId);
+                    }
+                } catch (sitemapErr) {
+                    console.warn("Sitemap update skip hui:", sitemapErr);
+                }
+
+                showStatus(pubStatus, 'status-success', 'Mubarak ho! Khabar #' + nextId + ' permanently publish ho gayi hai. 30 seconds mein website par live dikhegi!');
+                document.getElementById('publish-news-form').reset();
+
+            } catch (err) {
+                showStatus(pubStatus, 'status-error', 'Error: ' + err.message);
+            } finally {
+                pubBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
